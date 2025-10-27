@@ -174,6 +174,14 @@ web-2_fqdn = "web-2.ru-central1.internal"
 web-2_private_ip = "192.168.30.27"
 zabbix_public_ip = "158.160.127.151"
 
+## Скриншоты реализации
+
+| Компонент | Скриншот |
+|-----------|---------|
+| Рабочее состояние инфраструктуры | ![Running](./screenshots/running.png) |
+| Конфигурация проекта | ![Sys-diplom](./screenshots/sys-diplom.png) |
+
+
 текст
 
 ## Примечания
