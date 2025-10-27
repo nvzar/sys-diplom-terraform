@@ -8,6 +8,32 @@
 - Логированием (Elasticsearch + Kibana)
 - Резервным копированием (Snapshot Schedule)
 
+## 📊 Доказательства
+
+### Terraform Output
+![Terraform Output](screenshots/01-terraform-output.png)
+
+### ВМ в статусе RUNNING
+![VMs Running](screenshots/02-vms-running.png)
+
+### Zabbix Dashboard
+![Zabbix Dashboard](screenshots/03-zabbix-dashboard.png)
+
+### Kibana Dashboard
+![Kibana Dashboard](screenshots/04-kibana-dashboard.png)
+
+### Security Groups
+![Security Groups](screenshots/05-security-groups.png)
+
+### Snapshot Schedules
+![Snapshot Schedules](screenshots/06-snapshot-schedules.png)
+
+### GitHub Repository
+![GitHub Repo](screenshots/07-github-repo.png)
+
+### Bastion SSH Access
+![Bastion SSH](screenshots/08-bastion-ssh.png)
+
 ## Архитектура
 
 ### Сеть
@@ -36,7 +62,7 @@
 ### Резервное копирование
 - **Snapshot Schedule** для всех ВМ
 - Ежедневное копирование в 2:00 AM UTC
-- Хранение последних 7 снимков (1 неделя)
+- Хранение 7 снимков (1 неделя)
 
 ## Развертывание
 
@@ -47,17 +73,17 @@
 
 ### Шаги развертывания
 
-```bash
-# 1. Инициализируйте Terraform
+1. Инициализируйте Терраформ.
 cd ~/sys-diplom-terraform
-terraform init
+инициализация terraform
 
-# 2. Примените конфигурацию
-terraform apply -auto-approve
+2. Примените конфигурацию
+terraform применить -автоматическое одобрение
 
-# 3. Получите выходные данные
-terraform output
-```
+3. Получите данные на выходные
+выход терраформинга
+
+текст
 
 ## Доступ к сервисам
 
@@ -71,19 +97,19 @@ terraform output
 - **Elasticsearch API**: http://192.168.20.9:9200
 
 ### Bastion Host
-```bash
-# SSH доступ к bastion
+SSH доступ к bastion
 ssh -i ~/.ssh/id_rsa ubuntu@158.160.55.35
 
-# SSH через bastion к web-1
+SSH через бастион к web-1
 ssh -i ~/.ssh/id_rsa -o "ProxyCommand=ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@158.160.55.35" ubuntu@192.168.20.21
 
-# SSH через bastion к web-2
+SSH через бастион к web-2
 ssh -i ~/.ssh/id_rsa -o "ProxyCommand=ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@158.160.55.35" ubuntu@192.168.30.27
 
-# SSH через bastion к Elasticsearch
+SSH через бастион к Elasticsearch
 ssh -i ~/.ssh/id_rsa -o "ProxyCommand=ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@158.160.55.35" ubuntu@192.168.20.9
-```
+
+текст
 
 ## Файлы Terraform
 
@@ -98,7 +124,6 @@ ssh -i ~/.ssh/id_rsa -o "ProxyCommand=ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@158.1
 
 ### Инфраструктура
 ✅ Terraform для развёртки
-✅ Ansible для конфигурации
 ✅ VPC Network с публичными и приватными сетями
 ✅ Bastion Host для доступа к приватным ВМ
 ✅ NAT Gateway для исходящего доступа
@@ -135,12 +160,11 @@ ssh -i ~/.ssh/id_rsa -o "ProxyCommand=ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@158.1
 
 ### Резервное копирование
 ✅ Snapshot Schedule для всех ВМ
-✅ Ежедневное копирование
+✅ Ежедневное копирование (0 2 * * *)
 ✅ Хранение 7 снимков (1 неделя)
 
 ## Выходные данные Terraform
 
-```
 bastion_public_ip = "158.160.55.35"
 elasticsearch_private_ip = "192.168.20.9"
 kibana_public_ip = "158.160.124.158"
@@ -149,13 +173,15 @@ web-1_private_ip = "192.168.20.21"
 web-2_fqdn = "web-2.ru-central1.internal"
 web-2_private_ip = "192.168.30.27"
 zabbix_public_ip = "158.160.127.151"
-```
+
+текст
 
 ## Примечания
 
-- Filebeat не установлен из-за ограничений CloudFront доступа из облака Yandex
-- ALB имеет баг в провайдере Terraform (endpoint остается null, но балансировщик работает)
-- Все SSH ключи и credentials защищены в .gitignore
+- Filebeat не установлен из-за ограничений доступа к внешним сетям из облака
+- ALB имеет баг в провайдере Terraform (endpoint остается null, но работает)
+- Используются прерываемые ВМ для экономии
+- Перед финальной сдачей сделайте ВМ постоянно работающими
 
 ## Стоимость
 
@@ -169,4 +195,3 @@ zabbix_public_ip = "158.160.127.151"
 
 Николай Зарубов
 nvzarubov@gmail.com
-
