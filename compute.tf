@@ -5,6 +5,7 @@ locals {
 
 # Bastion Host
 resource "yandex_compute_instance" "bastion" {
+  allow_stopping_for_update = true
   name        = "bastion"
   hostname    = "bastion"
   zone        = var.zones[0]
@@ -41,6 +42,7 @@ resource "yandex_compute_instance" "bastion" {
 
 # Web Server 1 (zone A)
 resource "yandex_compute_instance" "web-1" {
+  allow_stopping_for_update = true
   name        = "web-1"
   hostname    = "web-1"
   zone        = var.zones[0]
@@ -76,6 +78,7 @@ resource "yandex_compute_instance" "web-1" {
 
 # Web Server 2 (zone B)
 resource "yandex_compute_instance" "web-2" {
+  allow_stopping_for_update = true
   name        = "web-2"
   hostname    = "web-2"
   zone        = var.zones[1]
@@ -111,6 +114,7 @@ resource "yandex_compute_instance" "web-2" {
 
 # Zabbix Server
 resource "yandex_compute_instance" "zabbix" {
+  allow_stopping_for_update = true
   name        = "zabbix"
   hostname    = "zabbix"
   zone        = var.zones[0]
@@ -147,6 +151,7 @@ resource "yandex_compute_instance" "zabbix" {
 
 # Elasticsearch Server
 resource "yandex_compute_instance" "elasticsearch" {
+  allow_stopping_for_update = true
   name        = "elasticsearch"
   hostname    = "elasticsearch"
   zone        = var.zones[0]
@@ -182,6 +187,7 @@ resource "yandex_compute_instance" "elasticsearch" {
 
 # Kibana Server
 resource "yandex_compute_instance" "kibana" {
+  allow_stopping_for_update = true
   name        = "kibana"
   hostname    = "kibana"
   zone        = var.zones[0]
