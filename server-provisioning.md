@@ -1,2 +1,10 @@
 # Развертывание и настройка серверов
 Terraform + Ansible интеграция
+bastion_public_ip = "158.160.55.35"
+elasticsearch_private_ip = "192.168.20.9"
+kibana_public_ip = "158.160.124.158"
+web-1_fqdn = "web-1.ru-central1.internal"
+web-1_private_ip = "192.168.20.21"
+web-2_fqdn = "web-2.ru-central1.internal"
+web-2_private_ip = "192.168.30.27"
+zabbix_public_ip = "158.160.127.151"
