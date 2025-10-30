@@ -1,0 +1,3 @@
+---
+- name: Setup
+  debug: msg="Common role"

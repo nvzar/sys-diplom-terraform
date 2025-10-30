@@ -1,0 +1,5 @@
+---
+- name: Setup
+  hosts: all
+  tasks:
+    - debug: msg="Done"

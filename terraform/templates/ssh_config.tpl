@@ -1,0 +1,2 @@
+Host bastion
+  HostName localhost

@@ -1,0 +1,3 @@
+---
+- name: Zabbix
+  debug: msg="Zabbix role"
