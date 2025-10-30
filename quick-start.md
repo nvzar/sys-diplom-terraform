@@ -1,2 +1,2 @@
 # Быстрый старт
-cd terraform/ && terraform init && terraform apply -auto-approve
+cd terraform && terraform apply -auto-approve
